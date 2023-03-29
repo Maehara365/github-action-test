@@ -12,5 +12,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16.x"
-      - run: yarn
-      - run: yarn dist
+          cache: "yarn"
+      - name: Install
+        run: yarn
+      - name: Build
+        run: yarn dist
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          path: dist/
