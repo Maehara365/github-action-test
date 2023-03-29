@@ -1,0 +1,136 @@
+.section-intro {
+  @include desktop {
+    padding-top: 100px;
+  }
+  @include mobile {
+    padding-top: 50px;
+  }
+  .section-content {
+    @include mobile {
+      padding: 0 6.8%;
+    }
+  }
+  .intro {
+    .cell {
+      // &:nth-of-type(2n+1) {
+      //   @include desktop {
+      //     padding-right: 1px;
+      //   }
+      // }
+      // &:not(:nth-of-type(-n+2)) {
+      //   @include desktop {
+      //     padding-top: 1px;
+      //   }
+      // }
+      &:not(:nth-of-type(2)) {
+        @include mobile {
+          padding-top: 15px;
+          
+        }
+      }
+      &:first-of-type {
+        @include mobile {
+          order: 2;
+        }
+      }
+      &:nth-of-type(2) {
+        @include mobile {
+          order: 1;
+        }
+      }
+      &:nth-of-type(3) {
+        @include mobile {
+          order: 3;
+        }
+      }
+      &:last-of-type {
+        @include mobile {
+          order: 4;
+        }
+      }
+    }
+    .panel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      // @include desktop {
+      //   max-height: 900px;
+      //   height: 64.286vw;
+      // }
+      // @include mobile {
+      //   height: 128.5vw;
+      //   max-height: 485px;
+      // }
+      &.comming-soon {
+        pointer-events: none;
+      }
+      &:hover {
+        .intro-img {
+          @include desktop {
+            transform: scale(1.05);
+          }
+        }
+        .intro__title {
+          @include desktop {
+            color: #D8222A;
+          }
+        }
+      }
+    }
+    &-img {
+      transition: 300ms $ease-in-out;
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    // &-bg {
+    //   display: block;
+    //   position: absolute;
+    //   width: 100%;
+    //   height: 100%;
+    //   top: 0;
+    //   left: 0;
+    //   background-size: cover;
+    //   background-repeat: no-repeat;
+    //   background-position: center;
+    //   transition: 300ms $ease-in-out;
+    // }
+    &__title {
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      transition: 300ms $ease-in-out;
+      text-align: center;
+      @include desktop {
+        // font-size: 10rem;
+        font-size: 7.2vmax;
+      }
+      @include mobile {
+        font-size: 5rem;  
+      }
+      &.bk {
+        color: #000;
+      }
+      span {
+        display: block;
+        line-height: 1.2;
+        @include desktop {
+          font-size: 2.5vmax;
+        }
+        @include mobile {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}

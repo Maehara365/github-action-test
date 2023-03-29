@@ -1,0 +1,61 @@
+
+
+
+.scroll {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-bottom: 20px;
+	transform: translateX(-50%);
+	@include mobile {
+	}
+	a {
+		display: inline-block;
+		overflow: hidden;
+		padding: 10px 10px 54px;
+		color: #fff;
+		font-size: 1.8rem;
+		font-family: 'Roboto Condensed', sans-serif;
+		@include mobile {
+			padding-bottom: 40px;
+			font-size: 1.2rem;
+		}
+		&::after {
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			width: 1px;
+			height: 40px;
+			background: rgba(255, 255, 255, .4);
+			content: '';
+			animation: sdl 1.5s cubic-bezier(1, 0, 0, 1) infinite;
+		}
+		&::before {
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			width: 1px;
+			height: 40px;
+			background: rgba(255, 255, 255, .4);
+			content: '';
+		}
+		@keyframes sdl {
+			0% {
+				transform: scale(1, 0);
+				transform-origin: 0 0;
+			}
+			50% {
+				transform: scale(1, 1);
+				transform-origin: 0 0;
+			}
+			50.1% {
+				transform: scale(1, 1);
+				transform-origin: 0 100%;
+			}
+			100% {
+				transform: scale(1, 0);
+				transform-origin: 0 100%;
+			}
+		}
+	}
+}

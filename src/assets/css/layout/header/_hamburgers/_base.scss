@@ -1,0 +1,105 @@
+// Hamburger
+// ==================================================
+.hamburger {
+  display: inline-block;
+  overflow: visible;
+  margin: 0;
+  padding: $hamburger-padding-y $hamburger-padding-x;
+  border: 0;
+  background-color: transparent;
+  color: inherit;
+  text-transform: none;
+  // Normalize (<button>)
+  font: inherit;
+  cursor: pointer;
+  transition-timing-function: linear;
+  transition-duration: .15s;
+  transition-property: opacity, filter;
+
+  // @include mobile {
+  //   padding: 17px 19px;
+  //   height: 60px;
+  // }
+
+  &:hover {
+    @if $hamburger-hover-use-filter == true {
+      filter: $hamburger-hover-filter;
+    }
+    @else {
+      @include desktop {
+        opacity: $hamburger-hover-opacity;
+
+      }
+    }
+  }
+
+  &.is-active {
+    &:hover {
+      @if $hamburger-hover-use-filter == true {
+        filter: $hamburger-active-hover-filter;
+      }
+      @else {
+        opacity: $hamburger-active-hover-opacity;
+      }
+    }
+
+    .hamburger-inner,
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      right: auto;
+      width: 100%;
+      background-color: $hamburger-active-layer-color;
+      opacity: 1;
+    }
+  }
+}
+
+.hamburger-box {
+  position: relative;
+  display: inline-block;
+  width: $hamburger-layer-width;
+  height: $hamburger-layer-height * 3 + $hamburger-layer-spacing * 2;
+  // height: 18px;
+}
+
+.hamburger-inner {
+  top: 60%;
+  display: block;
+  margin-top: calc( $hamburger-layer-height / -2 );
+
+  &,
+  &::before,
+  &::after {
+    position: absolute;
+    right: 0;
+    width: $hamburger-layer-width;
+    // width: 80%;
+    height: $hamburger-layer-height;
+    border-radius: $hamburger-layer-border-radius;
+    background-color: $hamburger-layer-color;
+    transition-timing-function: ease;
+    transition-duration: .15s;
+    transition-property: transform;
+  }
+  &::before,
+  &::after {
+    display: block;
+    content: '';
+  }
+
+  &::before {
+    top: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
+    // width: 30px;
+  }
+
+  &::after {
+    right: 0;
+    bottom: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
+    // width: 80%;
+  }
+
+
+  &::before {
+    // opacity: 0;
+  }
+}

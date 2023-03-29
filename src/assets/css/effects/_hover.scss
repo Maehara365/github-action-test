@@ -1,0 +1,42 @@
+@include desktop {
+
+	.hover {
+		overflow: hidden;
+		display: block;
+		transition: 400ms $easeOutQuart;
+		transform:translate(0, 0);
+		img {
+			// -webkit-transform: scale(1);
+			// transform: scale(1);
+			opacity: 1;
+		}
+		&:hover {
+			transform:translate(0, -15px);
+
+
+			box-shadow: 14px 14px 10px rgba(0,0,0,0.2);
+
+
+			img {
+				// -webkit-transform: scale(1.15);
+				// transform: scale(1.15);
+				// opacity: 0.8;
+			}
+		}
+	}
+
+	.zoom {
+		overflow: hidden;
+		img {
+			transform: scale(1);
+			transition: 1500ms $easeOutQuint;
+		}
+		&:hover {
+			.zoom-img {
+				// -webkit-transform: scale(1.15);
+				transform: scale(1.1);
+				// opacity: 0.8;
+			}
+		}
+	}
+}

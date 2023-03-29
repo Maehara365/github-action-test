@@ -1,0 +1,88 @@
+@charset "utf-8";
+@import './variables';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  font-size: $global-font-size;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/*
+  タイポグラフィの微調整
+  4. アクセシブルなline-heightを追加
+  5. テキストのレンダリングを改善
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-size: $base-font-size;
+  font-family: $font__noto;
+  letter-spacing: 0;
+  font-feature-settings: "palt";
+  text-rendering: optimizeLegibility;
+  line-height: $base-line-height;
+  color: $base-font-color;
+
+  @include mobile {
+    // font-size: $base-font-size-small;
+  }
+}
+
+main,
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+
+
+/*
+  6. メディア要素のデフォルトを改善
+*/
+// img, picture, video, canvas, svg {
+//   display: block;
+//   max-width: 100%;
+// }
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+ul,
+ol {
+  list-style: none;
+}
+img {
+  vertical-align: bottom;
+  border-style: none;
+}

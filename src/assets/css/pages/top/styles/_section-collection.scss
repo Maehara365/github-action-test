@@ -1,0 +1,184 @@
+.section-collection {
+  & + .section-intro {
+    @include desktop {
+      padding-top: 100px;
+    }
+    @include mobile {
+      padding-top: 45px;
+    }
+  }
+  &.videoPlay {
+    .collection-inner {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .btn-wrap {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .video {
+      min-width: 100%;
+      min-height: 100%;
+    }
+  }
+  .content {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: #fff no-repeat top center;
+    background-size: cover;
+  }
+  .collection {
+    height: 100%;
+    position: relative;
+    &-inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -70%);
+      z-index: 5;
+      text-align: center;
+      width: 90%;
+      transition: opacity 300ms $ease-in-out;
+    }
+    &__title {
+      color: #fff;
+      @include desktop {
+        // font-size: 9rem;
+        font-size: 8vmin;
+      }
+      @include mobile {
+        font-size: 4.5rem;
+      }
+    }
+    &__cat {
+      color: #fff;
+      line-height: 1;
+      @include desktop {
+        font-size: 3rem;
+      }
+      @include mobile {
+        font-size: 1.5rem;
+      }
+    }
+    .play-btn {
+      position: relative;
+      display: block;
+      background-image: url(../img/common/icon-play_active.svg);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: absolute;
+      left: 50%;
+      transform: translate(-40%, 100%);
+      @include desktop {
+        bottom: -4.09vh;
+        width: 11.8vh;
+        height: 11.8vh;
+        max-width: 130px;
+        max-height: 130px;
+      }
+      @include mobile {
+        bottom: -20px;
+        width: 65px;
+        height: 65px;
+      }
+      &::before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100.1%;
+        height: 100.1%;
+        background-image: url(../img/common/icon-play.svg);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: opacity 300ms $ease-in-out;
+      }
+      &:hover {
+        &::before {
+          @include desktop {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+  .btn-wrap {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    transition: opacity 300ms $ease-in-out;
+    @include desktop {
+      bottom: 9.54vh;
+    }
+    @include mobile {
+      bottom: 9vh;
+    }
+    .btn {
+      color: #fff;
+      &:hover {
+        span {
+          &::before {
+            @include desktop {
+              background-color: #D8222A;
+            }
+          }
+        }
+      }
+      span {
+        &::before {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+
+
+  .video {
+    transition: all 300ms $ease-in-out;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000;
+    width: auto;
+    height: auto;
+    min-width: 500%;
+    min-height: 165%;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      border-width: 0;
+    }
+
+    &.isPlay {
+        min-width: 100%;
+        min-height: 100%;
+    }
+  }
+  .thumb {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    position: absolute;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 100;
+    opacity: 1;
+    background-color: black;
+    &.hide {
+      z-index: 0;
+    }
+  }
+}

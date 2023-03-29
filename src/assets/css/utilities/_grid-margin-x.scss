@@ -1,0 +1,19 @@
+@use "sass:math";
+
+@mixin getGridMargin($gutter) {
+	.grid-margin-x-#{$gutter} {
+		margin: 0 math.div($gutter, -2) + px;
+		.cell {
+			padding: 0 math.div($gutter, 2) + px;
+		}
+	}
+}
+
+@include desktop {
+	@include getGridMargin( 40 );
+	@include getGridMargin( 70 );
+}
+
+@include mobile {
+	@include getGridMargin( 10 );
+}

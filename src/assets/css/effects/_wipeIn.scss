@@ -1,0 +1,73 @@
+.wipeIn {
+	opacity: 0;
+
+	transition: opacity 1000ms;
+	.img {
+		width: 100%;
+		transform: translate(0, 40px) scale(1.1);
+		transition: transform 2000ms $easeOutCubic;
+	}
+
+	.clip {
+		overflow: hidden;
+		position: relative;
+		z-index: 1;
+		display: block;
+	}
+
+
+	&.animate {
+		opacity: 1;
+		.img {
+			animation: wipein 1.0s 0.2s both;
+			transform: scale(1);
+
+		}
+
+		.clip {
+
+			&:after {
+				content: " ";
+				position: absolute;
+				// z-index: -1;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				display: block;
+				width: 0%;
+				height: 100%;
+				background-color: #f0f0f0;
+				animation: expin 0.8s $easeInOutQuint backwards;
+			}
+			&.bk {
+				&:after {
+
+					background-color: #352B29;
+				}
+			}
+
+		}
+	}
+}
+
+
+@keyframes expin {
+    0% {
+		width: 100%;
+    }
+    100% {
+		width: 0%;
+    }
+}
+
+@keyframes wipein {
+    0% {
+		// filter: opacity(0) brightness(400%) contrast(400%);
+		opacity: 0;
+    }
+    100% {
+		opacity: 1;
+        // filter: opacity(100%) brightness(100%) contrast(100%);
+    }
+}

@@ -1,0 +1,79 @@
+// @import "helper/row";
+
+.inline-block {
+    font-size: 0;
+    li {
+        display: inline-block;
+    }
+}
+
+
+a {
+    @include link-color($base-font-color, lighten($base-font-color, 0%));
+    text-decoration: none;
+    outline: none;
+    .alpha {
+        opacity: 1;
+        transition: all 100ms $ease-in-out;
+        @include mobile {
+            transition-duration:0s;
+        }
+    }
+    &:hover .alpha {
+        opacity: $link-alpha;
+        @include mobile {
+            opacity: 1;
+        }
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+.figure, .flex{
+    img{
+        width: 100%;
+    }
+}
+
+
+
+.tag {
+    height: 0;
+    overflow: hidden;
+}
+
+
+img{
+    &.flex{
+		width: 100%;
+		height: auto;
+    }
+    &.full{
+		// width: auto;
+		max-width: none;
+	}
+
+	&.cover {
+		object-fit: cover;
+	}
+}
+
+.show-small{
+    display: none;
+    @include mobile {
+        display: inherit;
+    }
+}
+.hide-small{
+    @include mobile {
+        display: none;
+    }
+}
+.small-nopad{
+    @include mobile {
+        padding: 0 !important;
+    }
+}

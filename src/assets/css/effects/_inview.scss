@@ -1,0 +1,50 @@
+.inview {
+
+	opacity: 0;
+	&.slideIn {
+
+		transform:translate(0px, 60px);
+		transition: all 800ms $easeOutCubic;
+
+
+
+		&.bottom {
+			transition: all 1600ms $easeOutExpo;
+			transform:translate(0px, 120px);
+		}
+		&.animate {
+			opacity: 1;
+			transform:translate(0px, 0px);
+		}
+
+	}
+
+
+
+	&.fadeIn {
+		transition: opacity 1500ms $ease;
+
+		&.animate {
+			opacity: 1;
+
+		}
+
+	}
+
+}
+
+
+
+.masker {
+    display: inline-block;
+    overflow: hidden;
+    .typo {
+        transform: translate(0, 100%);
+        transition: transform 1600ms $easeInOutQuart;
+    }
+    &.animate {
+        .typo {
+            transform: translate(0, 0%);
+        }
+    }
+}

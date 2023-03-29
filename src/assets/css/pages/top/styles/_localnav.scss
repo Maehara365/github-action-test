@@ -1,0 +1,28 @@
+.localnav {
+  @include desktop {
+    padding: 70px 25px;
+  }
+  @include mobile {
+    padding: 50px 20px;
+  }
+  &-item {
+    text-align: center;
+    a {
+      transition: 200ms $ease-in-out;
+      @include desktop {
+        font-size: 12rem;
+        // font-size: 8.5vmax;
+        line-height: 1.1;
+      }
+      @include mobile {
+        font-size: 5rem;
+        line-height: 1.1;
+      }
+      &:hover {
+        @include desktop {
+          color: #D8222A;
+        }
+      }
+    }
+  }
+}

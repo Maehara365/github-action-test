@@ -1,0 +1,7 @@
+@mixin link-color($normal, $hover) {
+	color: $normal;
+	&:hover {
+		color: $hover;
+		text-decoration: none;
+	}
+}

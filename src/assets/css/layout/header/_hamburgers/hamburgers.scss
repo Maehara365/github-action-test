@@ -1,0 +1,227 @@
+@charset "UTF-8";
+/*!
+ * Hamburgers
+ * @description Tasty CSS-animated hamburgers
+ * @author Jonathan Suh @jonsuh
+ * @site https://jonsuh.com/hamburgers
+ * @link https://github.com/jonsuh/hamburgers
+ */
+
+// Settings
+// ==================================================
+$hamburger-padding-x           : 22px !default;
+$hamburger-padding-y           : 26px !default;
+$hamburger-layer-width         : 22px !default;
+$hamburger-layer-height        : 1px !default;
+$hamburger-layer-spacing       : 5px !default;
+$hamburger-layer-color         : #fff !default;
+$hamburger-layer-border-radius : 0px !default;
+$hamburger-hover-opacity       : 0.7 !default;
+$hamburger-active-layer-color  : $hamburger-layer-color !default;
+$hamburger-active-hover-opacity: $hamburger-hover-opacity !default;
+
+// To use CSS filters as the hover effect instead of opacity,
+// set $hamburger-hover-use-filter as true and
+// change the value of $hamburger-hover-filter accordingly.
+$hamburger-hover-use-filter   : false !default;
+$hamburger-hover-filter       : opacity(50%) !default;
+$hamburger-active-hover-filter: $hamburger-hover-filter !default;
+
+// Types (Remove or comment out what you don’t need)
+// ==================================================
+$hamburger-types: (
+  3dx,
+  3dx-r,
+  3dy,
+  3dy-r,
+  3dxy,
+  3dxy-r,
+  arrow,
+  arrow-r,
+  arrowalt,
+  arrowalt-r,
+  arrowturn,
+  arrowturn-r,
+  boring,
+  collapse,
+  collapse-r,
+  elastic,
+  elastic-r,
+  emphatic,
+  emphatic-r,
+  minus,
+  slider,
+  slider-r,
+  spin,
+  spin-r,
+  spring,
+  spring-r,
+  stand,
+  stand-r,
+  squeeze,
+  vortex,
+  vortex-r
+) !default;
+
+// Base Hamburger (We need this)
+// ==================================================
+@import "base";
+
+// Hamburger types
+// ==================================================
+// @import "types/3dx";
+// @import "types/3dx-r";
+// @import "types/3dy";
+// @import "types/3dy-r";
+// @import "types/3dxy";
+// @import "types/3dxy-r";
+// @import "types/arrow";
+// @import "types/arrow-r";
+// @import "types/arrowalt";
+// @import "types/arrowalt-r";
+// @import "types/arrowturn";
+// @import "types/arrowturn-r";
+// @import "types/boring";
+// @import "types/collapse";
+// @import "types/collapse-r";
+// @import "types/elastic";
+// @import "types/elastic-r";
+// @import "types/emphatic";
+// @import "types/emphatic-r";
+// @import "types/minus";
+// @import "types/slider";
+// @import "types/slider-r";
+// @import "types/spin";
+@import "types/spin-r";
+// @import "types/spring";
+// @import "types/spring-r";
+// @import "types/stand";
+// @import "types/stand-r";
+// @import "types/squeeze";
+// @import "types/vortex";
+// @import "types/vortex-r";
+
+// ==================================================
+// Cooking up additional types:
+//
+// The Sass for each hamburger type should be nested
+// inside an @if directive to check whether or not
+// it exists in $hamburger-types so only the CSS for
+// included types are generated.
+//
+// e.g. hamburgers/types/_new-type.scss
+//
+// @if index($hamburger-types, new-type) {
+//   .hamburger--new-type {
+//     ...
+//   }
+// }
+
+
+
+
+$hamburger-padding-x: 14px;
+$hamburger-padding-y: 15px;
+$hamburger-layer-width: 23px;
+$hamburger-layer-height: 1px;
+$hamburger-layer-spacing: 5px;
+$hamburger-layer-color: #000;
+$hamburger-layer-border-radius: 0;
+$hamburger-hover-opacity: 1;
+$hamburger-active-layer-color: $hamburger-layer-color;
+$hamburger-active-hover-opacity: $hamburger-hover-opacity;
+
+@import './hamburgers/hamburgers';
+
+.hamburger {
+	position: relative;
+	display: flex;
+	width: 80px;
+	height: 80px;
+	outline: none;
+	border: 0;
+	cursor: pointer;
+	pointer-events: all;
+	transition: transform 500ms $easeInOutCubic;
+
+	@include mobile {
+		width: 40px;
+		height: 40px;
+	}
+
+	&:before,
+	&:after {
+		position: absolute;
+		top: 34px;
+		left: 10px;
+		width: 60px;
+		height: 3px;
+		background: $hamburger-layer-color;
+		content: '';
+		transition: transform 300ms $ease-out;
+
+		@include mobile {
+			top: 16px;
+			width: 30px;
+			height: 1px;
+		}
+		@include mobile {
+			left: 5px;
+		}
+	}
+
+	&:after {
+		top: auto;
+		bottom: 30px;
+		width: 40px;
+
+		@include mobile {
+			width: 20px;
+			bottom: 16px;
+		}
+	}
+	.site-header & {
+
+		&.is-open {
+			// transition-delay: 50ms;
+			@include desktop {
+				transform: translateX(280px);
+			}
+			@include mobile {
+				transform: translateX(calc(250px - (100% + 20px)));
+			}
+			&:before,
+			&:after {
+				background: #8c8c8c !important;
+				@include desktop {
+					width: 40px;
+					left: 20px;
+				}
+				@include mobile {
+					left: 10px;
+					width: 20px;
+					height: 3px;
+				}
+			}
+			&:before {
+				@include desktop {
+					transform: translateY(6px) rotate(135deg);
+				}
+				@include mobile {
+					transform: translateY(2.5px) rotate(135deg);
+				}
+			}
+			&:after {
+				@include desktop {
+					transform: translateY(-6px) rotate(45deg);
+				}
+				@include mobile {
+					transform: translateY(-2.5px) rotate(45deg);
+				}
+				@include mobile {
+					bottom: 16px;
+				}
+			}
+		}
+	}
+}

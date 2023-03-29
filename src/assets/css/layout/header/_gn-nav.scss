@@ -1,0 +1,11 @@
+.gn-nav {
+	position: fixed;
+	@include desktop {
+		left: 40px;
+		top: 55px;
+	}
+	@include mobile {
+		left: 20px;
+		top: 20px;
+	}
+}

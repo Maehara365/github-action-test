@@ -1,0 +1,13 @@
+@mixin mobile(){
+	// @for $i from 1 through length( $params ){
+	// 	$id : to-lower-case( nth( $params, $i) );
+	// 	.#{$id} {
+	// 		.#{$id} &{
+	// 			@content;
+	// 		}
+	// 	}
+	// }
+	@media only screen and (max-width: 768px) {
+		@content;
+	}
+}

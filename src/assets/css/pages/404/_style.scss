@@ -1,0 +1,19 @@
+@charset "utf-8";
+@import "../../config";
+@import "../../mixin";
+
+
+
+.page--404 {
+
+}
+.section-notfound {
+	.content {
+		padding: 30vh 0 0;
+		text-align: center;
+		p {
+			font-size: 12.0rem;
+		}
+
+	}
+}

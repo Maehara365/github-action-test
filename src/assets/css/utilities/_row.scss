@@ -1,0 +1,52 @@
+
+$row-width: 1240px !default;
+$gutter: 20px;
+
+
+@mixin calcRow($max-width, $padding: 20) {
+		max-width: ( $max-width + $padding*2 ) + px;
+}
+
+@mixin getRow($max-width, $padding: 20) {
+		.w#{$max-width} {
+			@include calcRow($max-width, $padding);
+		}
+}
+
+.row {
+	margin: 0 auto;
+	padding: 0 $gutter;
+	max-width: $row-width + $gutter * 2;
+	// padding: 0 4%;
+
+	.row {
+		padding: 0;
+	}
+
+	&.nopad {
+		padding: 0;
+	}
+
+	@include mobile {
+		padding: 0 35px;
+	}
+
+	&.sp-nopad {
+		@include mobile {
+			padding: 0;
+		}
+	}
+}
+
+
+// @include getRow( 400 );
+// @include getRow( 500 );
+// @include getRow( 600 );
+// @include getRow( 660 );
+// @include getRow( 700 );
+// @include getRow( 750 );
+@include getRow( 800 );
+@include getRow( 960 );
+@include getRow( 1000 );
+@include getRow( 1040 );
+@include getRow( 1320 )

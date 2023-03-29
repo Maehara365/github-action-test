@@ -1,0 +1,33 @@
+
+@each $key in $gnav__list {
+    $index_key: index($gnav__list, $key);
+    // $color: nth($gnav__color, $index_key);
+    .page--#{$key} {
+        .globalnav {
+            .gn-#{$key} {
+                // $img: #{$key};
+                // position: relative;
+                // a {
+                //     // font-weight: bold;
+                // }
+                // &:before {
+                //     position: absolute;
+                //     bottom: -1px;
+                //     left: 50%;
+                //     margin-left: -12px;
+                //     content: " ";
+                //     width: 0;
+                //     height: 0;
+                //     border: 12px solid transparent;
+                //     border-bottom: 12px solid #C0C0C0;
+                // }
+                & > a {
+                    &:before {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+        }
+    }
+}
