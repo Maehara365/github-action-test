@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        padding: 40px 0;
+        background-color: #efefef;
+        font-family: sans-serif;
+        line-height: 1.5;
+      }
+      button {
+        border-style: none;
+        color: inherit;
+        font-family: sans-serif;
+      }
+      .title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        text-align: center;
+      }
+      .accordion {
+        width: 400px;
+        max-width: 90%;
+        margin-top: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+        border: 2px solid #a3a3a3;
+      }
+      .accordion > * + * {
+        border-top: 1px solid #a3a3a3;
+      }
+      .accordion-header {
+        position: relative;
+      }
+      .accordion-trigger {
+        display: block;
+        width: 100%;
+        padding: 1rem 3rem 1rem 1.5rem;
+        font-size: 1.25rem;
+        text-align: left;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .accordion-trigger[aria-expanded="true"] {
+        background-color: #dbeafe;
+      }
+      @media (hover: hover) {
+        .accordion-trigger:hover {
+          background-color: #dbeafe;
+        }
+      }
+      .accordion-icon {
+        position: absolute;
+        top: 0;
+        right: 1rem;
+        bottom: 0;
+        width: 10px;
+        height: 10px;
+        margin: auto;
+        border: solid #000;
+        border-width: 2px 2px 0 0;
+        transform: rotate(135deg);
+      }
+      .accordion-trigger[aria-expanded="true"] .accordion-icon {
+        transform: rotate(-45deg);
+      }
+      /* .accordion-panel.__close {
+        display: none;
+      } */
+      .accordion-panel {
+        transition: 0.3s;
+        height: 56px;
+        overflow: hidden;
+      }
+      .accordion-panel[hidden] {
+        height: 0px;
+      }
+      .accordion-panel__text {
+        padding: 1rem 1.5rem;
+      }
+      .title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        text-align: center;
+      }
+      .disclosures {
+        width: 400px;
+        max-width: 90%;
+        margin-top: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+        border: 2px solid #a3a3a3;
+      }
+      .disclosures > * + * {
+        border-top: 1px solid #a3a3a3;
+      }
+      .summary {
+        position: relative;
+        display: block;
+        padding: 1rem 3rem 1rem 1.5rem;
+        font-size: 1.25rem;
+        text-align: left;
+        font-family: sans-serif;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .summary::-webkit-details-marker {
+        display: none;
+      }
+      .details[open] .summary {
+        background-color: #dbeafe;
+      }
+      @media (hover: hover) {
+        .summary:hover {
+          background-color: #dbeafe;
+        }
+      }
+      .icon {
+        position: absolute;
+        top: 0;
+        right: 1rem;
+        bottom: 0;
+        width: 10px;
+        height: 10px;
+        margin: auto;
+        border: solid #000;
+        border-width: 2px 2px 0 0;
+        transform: rotate(135deg);
+      }
+      .details[open] .icon {
+        transform: rotate(-45deg);
+      }
+      .text {
+        padding: 1rem 1.5rem;
+        border-top: 1px solid #a3a3a3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">アコーディオン実装例</h1>
+    <!-- <div class="accordion">
+      <h2 class="accordion-header">
+        <button
+          class="accordion-trigger"
+          aria-expanded="false"
+          aria-controls="accordion-panel-1"
+        >
+          buttonタグ使用<span class="accordion-icon"></span>
+        </button>
+      </h2>
+      <div id="accordion-panel-1" class="accordion-panel __close">
+        <p class="accordion-panel__text">
+          テキストが入ります。テキストが入ります。テキストが入ります。
+        </p>
+      </div>
+      <h2 class="accordion-header">
+        <button
+          class="accordion-trigger"
+          aria-expanded="false"
+          aria-controls="accordion-panel-2"
+        >
+          buttonタグ使用<span class="accordion-icon"></span>
+        </button>
+      </h2>
+      <div id="accordion-panel-2" class="accordion-panel __close">
+        <p class="accordion-panel__text">
+          テキストが入ります。テキストが入ります。テキストが入ります。
+        </p>
+      </div>
+      <h2 class="accordion-header">
+        <button
+          class="accordion-trigger"
+          aria-expanded="false"
+          aria-controls="accordion-panel-3"
+        >
+          buttonタグ使用<span class="accordion-icon"></span>
+        </button>
+      </h2>
+      <div id="accordion-panel-3" class="accordion-panel __close">
+        <p class="accordion-panel__text">
+          テキストが入ります。テキストが入ります。テキストが入ります。
+        </p>
+      </div>
+    </div>
+ -->
+    <div class="disclosures">
+      <details class="details">
+        <summary class="summary">
+          <h2>summary<span class="icon"></span></h2>
+        </summary>
+        <p class="text">
+          テキストが入ります。テキストが入ります。テキストが入ります。
+        </p>
+      </details>
+      <!-- <details class="details">
+        <summary class="summary">
+          <h2>summary<span class="icon"></span></h2>
+        </summary>
+        <p class="text">
+          テキストが入ります。テキストが入ります。テキストが入ります。
+        </p>
+      </details>
+      <details class="details">
+        <summary class="summary">
+          <h2>summary<span class="icon"></span></h2>
+        </summary>
+        <p class="text">
+          テキストが入ります。テキストが入ります。テキストが入ります。
+        </p>
+      </details> -->
+    </div>
+    <div class="accordion">
+      <h2 class="accordion-header">
+        <button
+          class="accordion-trigger"
+          aria-expanded="false"
+          aria-controls="accordion-panel-1"
+        >
+          button until-found<span class="accordion-icon"></span>
+        </button>
+      </h2>
+      <div id="accordion-panel-1" class="accordion-panel" hidden="until-found">
+        <p class="accordion-panel__text">検索するとヒットします。</p>
+      </div>
+      <h2 class="accordion-header">
+        <span
+          style="display: block"
+          class="accordion-trigger"
+          aria-expanded="false"
+          aria-controls="accordion-panel-2"
+        >
+          span until-found<span class="accordion-icon"></span>
+        </span>
+      </h2>
+      <div id="accordion-panel-2" class="accordion-panel" hidden="until-found">
+        <p class="accordion-panel__text">検索するとヒットします。</p>
+      </div>
+      <h2 class="accordion-header">
+        <span
+          style="display: block"
+          role="button"
+          tabindex="0"
+          class="accordion-trigger"
+          aria-expanded="false"
+          aria-controls="accordion-panel-3"
+        >
+          span role tabindex until-found<span class="accordion-icon"></span>
+        </span>
+      </h2>
+      <div id="accordion-panel-3" class="accordion-panel" hidden="until-found">
+        <p class="accordion-panel__text">検索するとヒットします。</p>
+      </div>
+    </div>
+    <script>
+      const triggers = document.querySelectorAll(".accordion-trigger");
+      triggers.forEach((trigger) => {
+        const controls = trigger.getAttribute("aria-controls");
+        const panel = document.getElementById(controls);
+
+        trigger.addEventListener("click", (e) => {
+          const target = e.currentTarget;
+          const isOpen = target.getAttribute("aria-expanded") === "true";
+
+          if (isOpen) {
+            // アコーディオンを閉じる
+            target.setAttribute("aria-expanded", "false");
+            panel.setAttribute("hidden", "until-found");
+          } else {
+            // アコーディオンを開く
+            target.setAttribute("aria-expanded", "true");
+            panel.removeAttribute("hidden");
+          }
+        });
+
+        // hidden="until-found"で検索がヒットした時
+        panel.addEventListener("beforematch", (e) => {
+          const target = e.currentTarget;
+
+          // アコーディオンを開く
+          target.removeAttribute("hidden");
+
+          // トリガーの処理
+          const id = target.id;
+          const trigger = document.querySelector(
+            `button[aria-controls="${id}"]`
+          );
+          trigger.setAttribute("aria-expanded", "true");
+        });
+      });
+    </script>
+  </body>
+</html>
