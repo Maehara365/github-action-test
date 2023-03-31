@@ -116,6 +116,14 @@
       .summary::-webkit-details-marker {
         display: none;
       }
+      .details {
+        transition: 0.3s;
+        height: 77px;
+        overflow: hidden;
+      }
+      .details[open] {
+        height: 158px;
+      }
       .details[open] .summary {
         background-color: #dbeafe;
       }
@@ -260,6 +268,10 @@
         <p class="accordion-panel__text">検索するとヒットします。</p>
       </div>
     </div>
+
+    <p>
+      aria-expanded属性は要素の開閉の状態を示すためのWAI-ARIAの属性です。<br />値にはtrue/falseのboolean値を指定することができtrue(開いている状態)、false(閉じている状態)を示すことができます。
+    </p>
     <script>
       const triggers = document.querySelectorAll(".accordion-trigger");
       triggers.forEach((trigger) => {
