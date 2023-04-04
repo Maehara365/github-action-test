@@ -1,9 +1,9 @@
-name: Develops Deploy
-run-name: Develops Deploy ${{ github.actor }} ${{ github.event_name }} ${{ github.ref }} ${{ github.repository }}
+name: Productions Deploy
+run-name: Productions Deploy by ${{ github.actor }}
 
 on:
   push:
-    branches: [develops]
+    branches: [main]
 
 jobs:
   build:
@@ -23,9 +23,9 @@ jobs:
       - name: Deploy FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{ secrets.DEV_SERVER }}
-          username: ${{ secrets.DEV_USERNAME }}
-          password: ${{ secrets.DEV_PASSWORD }}
-          server-dir: ${{ secrets.DEV_DIR }}
+          server: ${{ secrets.PRO_SERVER }}
+          username: ${{ secrets.PRO_USERNAME }}
+          password: ${{ secrets.PRO_PASSWORD }}
+          server-dir: ${{ secrets.PRO_DIR }}
           local-dir: ./htdocs/
           dangerous-clean-slate: true
