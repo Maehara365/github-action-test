@@ -1,0 +1,31 @@
+name: Develops Deploy
+run-name: Develops Deploy ${{ github.actor }} ${{ github.event_name }} ${{ github.ref }} ${{ github.repository }}
+
+on:
+  push:
+    branches: [develops]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+          cache: "yarn"
+      - name: Install
+        run: yarn
+      - name: Build
+        run: yarn dist
+      - name: Deploy FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.DEV_SERVER }}
+          username: ${{ secrets.DEV_USERNAME }}
+          password: ${{ secrets.DEV_PASSWORD }}
+          server-dir: ${{ secrets.DEV_DIR }}
+          local-dir: ./htdocs/
+          dangerous-clean-slate: true
