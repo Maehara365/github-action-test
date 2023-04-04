@@ -23,7 +23,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.2.0
         with:
           server: ${{ secrets.DEV_SERVER }}
-          username: ${{ secrets.DEV_USERNAME }}
+          username: ${{ secrets.DEV_USER }}
           password: ${{ secrets.DEV_PASSWORD }}
           server-dir: ${{ secrets.DEV_DIR }}
           local-dir: ./htdocs/
