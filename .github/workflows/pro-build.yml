@@ -21,7 +21,7 @@ jobs:
       - name: Build
         run: yarn dist
       - name: Deploy FTP
-        uses: SamKirkland/FTP-Deploy-Action@4
+        uses: SamKirkland/FTP-Deploy-Action@v4
         with:
           server: ${{ secrets.PRO_SERVER }}
           username: ${{ secrets.PRO_USERNAME }}
