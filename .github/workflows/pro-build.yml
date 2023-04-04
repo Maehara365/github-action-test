@@ -1,5 +1,5 @@
 name: Productions Deploy
-run-name: Productions Deploy ${{ github.actor }} ${{ github.event_name }} ${{ github.ref }} ${{ github.repository }}
+run-name: Productions Deploy by ${{ github.actor }}
 
 on:
   push:
