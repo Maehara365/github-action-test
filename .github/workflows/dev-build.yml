@@ -1,4 +1,5 @@
 name: Develops Deploy
+run-name: ${{ github.actor }} ${{ github.event_name }} ${{ runner.os }} ${{ github.ref }} ${{ github.repository }}
 
 on:
   push:
@@ -20,10 +21,10 @@ jobs:
       - name: Build
         run: yarn dist
       - name: Deploy FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.2.0
+        uses: SamKirkland/FTP-Deploy-Action@5.0.0
         with:
           server: ${{ secrets.DEV_SERVER }}
-          username: ${{ secrets.DEV_USER }}
+          username: ${{ secrets.DEV_USERNAME }}
           password: ${{ secrets.DEV_PASSWORD }}
           server-dir: ${{ secrets.DEV_DIR }}
           local-dir: ./htdocs/
